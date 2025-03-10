@@ -4,5 +4,5 @@ def compute_result(value):
     debug_mode = True  # Unused variable
     return temp
 
-def unused_helper():  # Unused function
+def helper_function():
     return "I’m never called"

@@ -1,16 +1,14 @@
-def calculate_price(item_count, discount):
-    if item_count > 10:
-        total = item_count * 5
-        tax = total * 0.1
-        final = total + tax
-        if discount:
-            final = final * 0.9
-    
-    if item_count > 10:
-        total = item_count * 2
-        tax = total * 0.1
-        final = total + tax
-        if discount:
-            final = final * 0.9
+# RSPEC-4144 Functions and methods should not have identical implementations
+class MyClass:
+    code = "secret"
 
-    return item_count * 5 + final
+    def calculate_code(self):
+        self.do_the_thing()
+        return self.__class__.code
+
+    def get_name(self):  # Noncompliant: duplicates calculate_code
+        self.do_the_thing()
+        return self.__class__.code
+
+    def do_the_thing(self):
+        pass  # on purpose
